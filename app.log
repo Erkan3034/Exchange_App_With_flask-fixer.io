@@ -9,3 +9,29 @@
 2025-07-27 23:40:41,547 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
 2025-07-27 23:40:42,887 - werkzeug - WARNING -  * Debugger is active!
 2025-07-27 23:40:42,898 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-07-27 23:47:17,870 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.2.0.2:5000
+2025-07-27 23:47:17,870 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-27 23:47:17,886 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-27 23:47:18,365 - werkzeug - WARNING -  * Debugger is active!
+2025-07-27 23:47:18,369 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-07-27 23:47:22,765 - werkzeug - INFO - 127.0.0.1 - - [27/Jul/2025 23:47:22] "GET / HTTP/1.1" 200 -
+2025-07-27 23:47:24,555 - werkzeug - INFO - 127.0.0.1 - - [27/Jul/2025 23:47:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-27 23:47:28,026 - app - INFO - Converting 10 USD to TRY
+2025-07-27 23:47:29,620 - app - INFO - API Response Status: 400
+2025-07-27 23:47:29,621 - app - INFO - API Response: {"success":false,"error":{"code":105,"type":"base_currency_access_restricted"}}
+2025-07-27 23:47:29,622 - app - ERROR - API hatasý: 400
+2025-07-27 23:47:29,631 - werkzeug - INFO - 127.0.0.1 - - [27/Jul/2025 23:47:29] "POST / HTTP/1.1" 200 -
+2025-07-27 23:47:33,542 - app - INFO - Converting 5 USD to TRY
+2025-07-27 23:47:35,624 - app - INFO - API Response Status: 400
+2025-07-27 23:47:35,625 - app - INFO - API Response: {"success":false,"error":{"code":105,"type":"base_currency_access_restricted"}}
+2025-07-27 23:47:35,625 - app - ERROR - API hatasý: 400
+2025-07-27 23:47:35,630 - werkzeug - INFO - 127.0.0.1 - - [27/Jul/2025 23:47:35] "POST / HTTP/1.1" 200 -
+2025-07-27 23:47:54,277 - app - INFO - Converting 10 EUR to TRY
+2025-07-27 23:47:56,328 - app - INFO - API Response Status: 200
+2025-07-27 23:47:56,329 - app - INFO - API Response: {"success":true,"timestamp":1753646655,"base":"EUR","date":"2025-07-27","rates":{"TRY":47.706187}}
+2025-07-27 23:47:56,332 - app - INFO - API Data: {'success': True, 'timestamp': 1753646655, 'base': 'EUR', 'date': '2025-07-27', 'rates': {'TRY': 47.706187}}
+2025-07-27 23:47:56,333 - app - INFO - Conversion successful: 10 EUR = 477.06187 TRY
+2025-07-27 23:47:56,342 - werkzeug - INFO - 127.0.0.1 - - [27/Jul/2025 23:47:56] "POST / HTTP/1.1" 200 -
