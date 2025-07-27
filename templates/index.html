@@ -209,6 +209,16 @@
             font-weight: 500;
         }
         
+        .error-message {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #feb2b2;
+            font-size: 0.9rem;
+        }
+        
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -311,11 +321,17 @@
             <p>Gerçek zamanlı döviz kurları ile hızlı ve güvenilir çeviri</p>
         </div>
 
-        <form class="converter-form" id="converterForm">
+        {% if error %}
+        <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i> {{ error }}
+        </div>
+        {% endif %}
+
+        <form class="converter-form" method="POST" action="/">
             <div class="input-group">
                 <label for="fromCurrency">Çevrilecek Para Birimi</label>
                 <div class="input-wrapper">
-                    <select class="currency-select" id="fromCurrency" name="fromCurrency">
+                    <select class="currency-select" id="fromCurrency" name="fromCurrency" required>
                         <option value="TRY">TRY - Türk Lirası</option>
                         <option value="USD" selected>USD - Amerikan Doları</option>
                         <option value="EUR">EUR - Euro</option>
@@ -327,7 +343,7 @@
                         <option value="CNY">CNY - Çin Yuanı</option>
                         <option value="RUB">RUB - Rus Rublesi</option>
                     </select>
-                    <input type="number" class="amount-input" id="amount" name="amount" placeholder="Miktar giriniz" step="0.01" min="0" required>
+                    <input type="number" class="amount-input" id="amount" name="amount" placeholder="Miktar giriniz" step="0.01" min="0" required value="{{ amount or '' }}">
                 </div>
             </div>
 
@@ -338,7 +354,7 @@
             <div class="input-group">
                 <label for="toCurrency">Hedef Para Birimi</label>
                 <div class="input-wrapper">
-                    <select class="currency-select" id="toCurrency" name="toCurrency">
+                    <select class="currency-select" id="toCurrency" name="toCurrency" required>
                         <option value="TRY" selected>TRY - Türk Lirası</option>
                         <option value="USD">USD - Amerikan Doları</option>
                         <option value="EUR">EUR - Euro</option>
@@ -350,7 +366,7 @@
                         <option value="CNY">CNY - Çin Yuanı</option>
                         <option value="RUB">RUB - Rus Rublesi</option>
                     </select>
-                    <input type="text" class="amount-input" id="result" placeholder="Sonuç burada görünecek" readonly>
+                    <input type="text" class="amount-input" id="result" placeholder="Sonuç burada görünecek" readonly value="{{ converted_amount or '' }}">
                 </div>
             </div>
 
@@ -364,10 +380,12 @@
             <p>Döviz kurları alınıyor...</p>
         </div>
 
-        <div class="result-section" id="resultSection">
-            <div class="result-amount" id="resultAmount">0.00</div>
-            <div class="result-rate" id="resultRate">1 USD = 0.00 TRY</div>
+        {% if converted_amount %}
+        <div class="result-section show" id="resultSection">
+            <div class="result-amount" id="resultAmount">{{ "%.2f"|format(converted_amount) }} {{ to_currency }}</div>
+            <div class="result-rate" id="resultRate">1 {{ from_currency }} = {{ "%.4f"|format(rate) }} {{ to_currency }}</div>
         </div>
+        {% endif %}
 
         <div class="features">
             <div class="feature">
@@ -389,97 +407,49 @@
     </div>
 
     <script>
-        /*
-                document.addEventListener('DOMContentLoaded', function() {
-                    const form = document.getElementById('converterForm');
-                    const swapBtn = document.getElementById('swapBtn');
-                    const loading = document.getElementById('loading');
-                    const resultSection = document.getElementById('resultSection');
-                    const resultAmount = document.getElementById('resultAmount');
-                    const resultRate = document.getElementById('resultRate');
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('converterForm');
+            const swapBtn = document.getElementById('swapBtn');
+            const loading = document.getElementById('loading');
+            const resultSection = document.getElementById('resultSection');
 
-                    // Para birimlerini değiştir
-                    swapBtn.addEventListener('click', function() {
-                        const fromCurrency = document.getElementById('fromCurrency');
-                        const toCurrency = document.getElementById('toCurrency');
-                        const amount = document.getElementById('amount');
-                        const result = document.getElementById('result');
+            // Para birimlerini değiştir
+            swapBtn.addEventListener('click', function() {
+                const fromCurrency = document.getElementById('fromCurrency');
+                const toCurrency = document.getElementById('toCurrency');
+                const amount = document.getElementById('amount');
+                const result = document.getElementById('result');
 
-                        const tempCurrency = fromCurrency.value;
-                        const tempAmount = amount.value;
+                const tempCurrency = fromCurrency.value;
+                const tempAmount = amount.value;
 
-                        fromCurrency.value = toCurrency.value;
-                        toCurrency.value = tempCurrency;
-                        amount.value = result.value;
-                        result.value = tempAmount;
-                    });
+                fromCurrency.value = toCurrency.value;
+                toCurrency.value = tempCurrency;
+                amount.value = result.value;
+                result.value = tempAmount;
+            });
 
-                    // Form gönderimi
-                    form.addEventListener('submit', function(e) {
-                        e.preventDefault();
+            // Form gönderimi sırasında loading göster
+            form.addEventListener('submit', function() {
+                loading.style.display = 'block';
+                if (resultSection) {
+                    resultSection.classList.remove('show');
+                }
+            });
 
-                        const amount = document.getElementById('amount').value;
-                        const fromCurrency = document.getElementById('fromCurrency').value;
-                        const toCurrency = document.getElementById('toCurrency').value;
-
-                        if (!amount || amount <= 0) {
-                            alert('Lütfen geçerli bir miktar giriniz.');
-                            return;
-                        }
-
-                        // Loading göster
-                        loading.style.display = 'block';
-                        resultSection.classList.remove('show');
-
-                        // Simüle edilmiş API çağrısı (gerçek uygulamada backend'e gönderilir)
-                        setTimeout(() => {
-                            // Demo sonuç (gerçek uygulamada API'den gelecek)
-                            const demoRates = {
-                                'USD-TRY': 31.50,
-                                'EUR-TRY': 34.20,
-                                'GBP-TRY': 40.10,
-                                'TRY-USD': 0.032,
-                                'TRY-EUR': 0.029,
-                                'TRY-GBP': 0.025
-                            };
-
-                            const rateKey = `${fromCurrency}-${toCurrency}`;
-                            const reverseRateKey = `${toCurrency}-${fromCurrency}`;
-
-                            let rate = demoRates[rateKey] || demoRates[reverseRateKey];
-                            if (!rate && reverseRateKey in demoRates) {
-                                rate = 1 / demoRates[reverseRateKey];
-                            }
-
-                            if (!rate) {
-                                rate = Math.random() * 50 + 10; // Demo için rastgele değer
-                            }
-
-                            const convertedAmount = (parseFloat(amount) * rate).toFixed(2);
-
-                            resultAmount.textContent = `${convertedAmount} ${toCurrency}`;
-                            resultRate.textContent = `1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
-
-                            document.getElementById('result').value = convertedAmount;
-
-                            loading.style.display = 'none';
-                            resultSection.classList.add('show');
-                        }, 1500);
-                    });
-
-                    // Input değişikliklerinde otomatik çeviri
-                    document.getElementById('amount').addEventListener('input', function() {
+            // Input değişikliklerinde otomatik çeviri (opsiyonel)
+            document.getElementById('amount').addEventListener('input', function() {
+                if (this.value && this.value > 0) {
+                    // 2 saniye bekle ve otomatik çevir
+                    clearTimeout(this.timeout);
+                    this.timeout = setTimeout(() => {
                         if (this.value && this.value > 0) {
-                            // Otomatik çeviri için form submit et
-                            setTimeout(() => {
-                                if (this.value && this.value > 0) {
-                                    form.dispatchEvent(new Event('submit'));
-                                }
-                            }, 1000);
+                            form.submit();
                         }
-                    });
-                });
-                */
+                    }, 2000);
+                }
+            });
+        });
     </script>
 </body>
 
