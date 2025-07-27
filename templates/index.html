@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Döviz Çevirici</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2d3748;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+        
+        .converter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .input-group label {
+            display: block;
+            color: #4a5568;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .input-wrapper:focus-within {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .currency-select {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 10px 0 0 10px;
+            font-weight: 500;
+            cursor: pointer;
+            min-width: 80px;
+            font-size: 0.9rem;
+        }
+        
+        .amount-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2d3748;
+            outline: none;
+        }
+        
+        .amount-input::placeholder {
+            color: #a0aec0;
+        }
+        
+        .swap-btn {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .swap-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .convert-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .convert-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .convert-btn:active {
+            transform: translateY(0);
+        }
+        
+        .result-section {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            display: none;
+        }
+        
+        .result-section.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .result-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .result-rate {
+            color: #718096;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .feature i {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .feature h3 {
+            color: #2d3748;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .feature p {
+            color: #718096;
+            font-size: 0.8rem;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .result-amount {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+            }
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            .amount-input {
+                font-size: 1rem;
+                padding: 14px;
+            }
+            .convert-btn {
+                padding: 14px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-exchange-alt"></i> Döviz Çevirici</h1>
+            <p>Gerçek zamanlı döviz kurları ile hızlı ve güvenilir çeviri</p>
+        </div>
+
+        <form class="converter-form" id="converterForm">
+            <div class="input-group">
+                <label for="fromCurrency">Çevrilecek Para Birimi</label>
+                <div class="input-wrapper">
+                    <select class="currency-select" id="fromCurrency" name="fromCurrency">
+                        <option value="TRY">TRY - Türk Lirası</option>
+                        <option value="USD" selected>USD - Amerikan Doları</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - İngiliz Sterlini</option>
+                        <option value="JPY">JPY - Japon Yeni</option>
+                        <option value="CAD">CAD - Kanada Doları</option>
+                        <option value="AUD">AUD - Avustralya Doları</option>
+                        <option value="CHF">CHF - İsviçre Frangı</option>
+                        <option value="CNY">CNY - Çin Yuanı</option>
+                        <option value="RUB">RUB - Rus Rublesi</option>
+                    </select>
+                    <input type="number" class="amount-input" id="amount" name="amount" placeholder="Miktar giriniz" step="0.01" min="0" required>
+                </div>
+            </div>
+
+            <button type="button" class="swap-btn" id="swapBtn" title="Para birimlerini değiştir">
+                <i class="fas fa-exchange-alt"></i>
+            </button>
+
+            <div class="input-group">
+                <label for="toCurrency">Hedef Para Birimi</label>
+                <div class="input-wrapper">
+                    <select class="currency-select" id="toCurrency" name="toCurrency">
+                        <option value="TRY" selected>TRY - Türk Lirası</option>
+                        <option value="USD">USD - Amerikan Doları</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - İngiliz Sterlini</option>
+                        <option value="JPY">JPY - Japon Yeni</option>
+                        <option value="CAD">CAD - Kanada Doları</option>
+                        <option value="AUD">AUD - Avustralya Doları</option>
+                        <option value="CHF">CHF - İsviçre Frangı</option>
+                        <option value="CNY">CNY - Çin Yuanı</option>
+                        <option value="RUB">RUB - Rus Rublesi</option>
+                    </select>
+                    <input type="text" class="amount-input" id="result" placeholder="Sonuç burada görünecek" readonly>
+                </div>
+            </div>
+
+            <button type="submit" class="convert-btn">
+                <i class="fas fa-calculator"></i> Çevir
+            </button>
+        </form>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Döviz kurları alınıyor...</p>
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <div class="result-amount" id="resultAmount">0.00</div>
+            <div class="result-rate" id="resultRate">1 USD = 0.00 TRY</div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-bolt"></i>
+                <h3>Hızlı</h3>
+                <p>Anında sonuç</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Güvenli</h3>
+                <p>Güvenilir API</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsive</h3>
+                <p>Tüm cihazlarda</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+                document.addEventListener('DOMContentLoaded', function() {
+                    const form = document.getElementById('converterForm');
+                    const swapBtn = document.getElementById('swapBtn');
+                    const loading = document.getElementById('loading');
+                    const resultSection = document.getElementById('resultSection');
+                    const resultAmount = document.getElementById('resultAmount');
+                    const resultRate = document.getElementById('resultRate');
+
+                    // Para birimlerini değiştir
+                    swapBtn.addEventListener('click', function() {
+                        const fromCurrency = document.getElementById('fromCurrency');
+                        const toCurrency = document.getElementById('toCurrency');
+                        const amount = document.getElementById('amount');
+                        const result = document.getElementById('result');
+
+                        const tempCurrency = fromCurrency.value;
+                        const tempAmount = amount.value;
+
+                        fromCurrency.value = toCurrency.value;
+                        toCurrency.value = tempCurrency;
+                        amount.value = result.value;
+                        result.value = tempAmount;
+                    });
+
+                    // Form gönderimi
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        const amount = document.getElementById('amount').value;
+                        const fromCurrency = document.getElementById('fromCurrency').value;
+                        const toCurrency = document.getElementById('toCurrency').value;
+
+                        if (!amount || amount <= 0) {
+                            alert('Lütfen geçerli bir miktar giriniz.');
+                            return;
+                        }
+
+                        // Loading göster
+                        loading.style.display = 'block';
+                        resultSection.classList.remove('show');
+
+                        // Simüle edilmiş API çağrısı (gerçek uygulamada backend'e gönderilir)
+                        setTimeout(() => {
+                            // Demo sonuç (gerçek uygulamada API'den gelecek)
+                            const demoRates = {
+                                'USD-TRY': 31.50,
+                                'EUR-TRY': 34.20,
+                                'GBP-TRY': 40.10,
+                                'TRY-USD': 0.032,
+                                'TRY-EUR': 0.029,
+                                'TRY-GBP': 0.025
+                            };
+
+                            const rateKey = `${fromCurrency}-${toCurrency}`;
+                            const reverseRateKey = `${toCurrency}-${fromCurrency}`;
+
+                            let rate = demoRates[rateKey] || demoRates[reverseRateKey];
+                            if (!rate && reverseRateKey in demoRates) {
+                                rate = 1 / demoRates[reverseRateKey];
+                            }
+
+                            if (!rate) {
+                                rate = Math.random() * 50 + 10; // Demo için rastgele değer
+                            }
+
+                            const convertedAmount = (parseFloat(amount) * rate).toFixed(2);
+
+                            resultAmount.textContent = `${convertedAmount} ${toCurrency}`;
+                            resultRate.textContent = `1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
+
+                            document.getElementById('result').value = convertedAmount;
+
+                            loading.style.display = 'none';
+                            resultSection.classList.add('show');
+                        }, 1500);
+                    });
+
+                    // Input değişikliklerinde otomatik çeviri
+                    document.getElementById('amount').addEventListener('input', function() {
+                        if (this.value && this.value > 0) {
+                            // Otomatik çeviri için form submit et
+                            setTimeout(() => {
+                                if (this.value && this.value > 0) {
+                                    form.dispatchEvent(new Event('submit'));
+                                }
+                            }, 1000);
+                        }
+                    });
+                });
+                */
+    </script>
+</body>
+
+</html>
