@@ -22,13 +22,65 @@ url = f"https://data.fixer.io/api/latest?access_key={api_key}"
 
 app = Flask(__name__)
 
+def get_exchange_rates():
+    """EUR bazında tüm kurları al"""
+    try:
+        response = requests.get(url)
+        if response.status_code != 200:
+            return None, f"API hatası: {response.status_code}"
+        
+        data = response.json()
+        if not data.get("success", False):
+            return None, f"API Error: {data.get('error', {}).get('info', 'Bilinmeyen hata')}"
+        
+        return data.get("rates", {}), None
+    except Exception as e:
+        return None, f"Bağlantı hatası: {str(e)}"
+
+def convert_currency(amount, from_currency, to_currency):
+    """Para birimi çevirisi yap"""
+    rates, error = get_exchange_rates()
+    if error:
+        return None, error
+    
+    # EUR bazında kurlar
+    eur_rates = rates
+    
+    # Eğer EUR'dan çeviriyorsak direkt kullan
+    if from_currency == "EUR":
+        if to_currency not in eur_rates:
+            return None, f"Para birimi bulunamadı: {to_currency}"
+        rate = eur_rates[to_currency]
+        return amount * rate, rate
+    
+    # Eğer EUR'a çeviriyorsak tersini al
+    if to_currency == "EUR":
+        if from_currency not in eur_rates:
+            return None, f"Para birimi bulunamadı: {from_currency}"
+        rate = 1 / eur_rates[from_currency]
+        return amount * rate, rate
+    
+    # Cross-rate hesaplama (USD -> TRY gibi)
+    if from_currency not in eur_rates:
+        return None, f"Para birimi bulunamadı: {from_currency}"
+    if to_currency not in eur_rates:
+        return None, f"Para birimi bulunamadı: {to_currency}"
+    
+    # Cross-rate = (EUR/TO_CURRENCY) / (EUR/FROM_CURRENCY)
+    # = (1/TO_RATE) / (1/FROM_RATE) = FROM_RATE / TO_RATE
+    from_rate = eur_rates[from_currency]
+    to_rate = eur_rates[to_currency]
+    cross_rate = to_rate / from_rate
+    
+    return amount * cross_rate, cross_rate
+
 @app.route("/", methods=["GET", "POST"]) 
 def index():
     if request.method == "POST":
         try:
             amount = request.form.get("amount")
-            from_currency = request.form.get("fromCurrency")  # HTML'deki name attribute'u
-            to_currency = request.form.get("toCurrency")      # HTML'deki name attribute'u
+            from_currency = request.form.get("fromCurrency")
+            to_currency = request.form.get("toCurrency")
             
             print(f"🔍 DEBUG: Amount: {amount}, From: {from_currency}, To: {to_currency}")
             app.logger.info(f"Converting {amount} {from_currency} to {to_currency}")
@@ -38,31 +90,13 @@ def index():
                 app.logger.error(error_msg)
                 return render_template("index.html", error=error_msg)
             
-            # API çağrısı
-            response = requests.get(url, params={"base": from_currency, "symbols": to_currency})
-            app.logger.info(f"API Response Status: {response.status_code}")
-            app.logger.info(f"API Response: {response.text}")
+            # Para birimi çevirisi
+            converted_amount, rate = convert_currency(float(amount), from_currency, to_currency)
             
-            if response.status_code != 200:
-                error_msg = f"API hatası: {response.status_code}"
+            if converted_amount is None:
+                error_msg = rate  # rate burada hata mesajı
                 app.logger.error(error_msg)
                 return render_template("index.html", error=error_msg)
-            
-            data = response.json()
-            app.logger.info(f"API Data: {data}")
-            
-            if "error" in data:
-                error_msg = f"API Error: {data['error']}"
-                app.logger.error(error_msg)
-                return render_template("index.html", error=error_msg)
-            
-            if to_currency not in data.get("rates", {}):
-                error_msg = f"Para birimi bulunamadı: {to_currency}"
-                app.logger.error(error_msg)
-                return render_template("index.html", error=error_msg)
-            
-            rate = data["rates"][to_currency]
-            converted_amount = rate * float(amount)
             
             app.logger.info(f"Conversion successful: {amount} {from_currency} = {converted_amount} {to_currency}")
             print(f"✅ Başarılı: {amount} {from_currency} = {converted_amount} {to_currency}")
@@ -96,18 +130,10 @@ def api_convert():
         if not api_key:
             return jsonify({"error": "API anahtarı bulunamadı!"}), 400
         
-        response = requests.get(url, params={"base": from_currency, "symbols": to_currency})
+        converted_amount, rate = convert_currency(float(amount), from_currency, to_currency)
         
-        if response.status_code != 200:
-            return jsonify({"error": f"API hatası: {response.status_code}"}), 400
-        
-        data = response.json()
-        
-        if "error" in data:
-            return jsonify({"error": data["error"]}), 400
-        
-        rate = data["rates"][to_currency]
-        converted_amount = rate * float(amount)
+        if converted_amount is None:
+            return jsonify({"error": rate}), 400
         
         return jsonify({
             "converted_amount": converted_amount,

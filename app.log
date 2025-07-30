@@ -35,3 +35,81 @@
 2025-07-27 23:47:56,332 - app - INFO - API Data: {'success': True, 'timestamp': 1753646655, 'base': 'EUR', 'date': '2025-07-27', 'rates': {'TRY': 47.706187}}
 2025-07-27 23:47:56,333 - app - INFO - Conversion successful: 10 EUR = 477.06187 TRY
 2025-07-27 23:47:56,342 - werkzeug - INFO - 127.0.0.1 - - [27/Jul/2025 23:47:56] "POST / HTTP/1.1" 200 -
+2025-07-30 23:40:34,737 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.172.46:5000
+2025-07-30 23:40:34,738 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-30 23:40:34,760 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-30 23:40:35,182 - werkzeug - WARNING -  * Debugger is active!
+2025-07-30 23:40:35,191 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-07-30 23:40:37,014 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:40:37] "GET / HTTP/1.1" 200 -
+2025-07-30 23:40:37,785 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:40:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-30 23:40:41,225 - app - INFO - Converting 10 USD to TRY
+2025-07-30 23:40:42,227 - app - INFO - API Response Status: 400
+2025-07-30 23:40:42,227 - app - INFO - API Response: {"success":false,"error":{"code":105,"type":"base_currency_access_restricted"}}
+2025-07-30 23:40:42,228 - app - ERROR - API hatasý: 400
+2025-07-30 23:40:42,230 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:40:42] "POST / HTTP/1.1" 200 -
+2025-07-30 23:41:17,749 - werkzeug - INFO -  * Detected change in 'C:\\Program Files\\Python313\\Lib\\logging\\__init__.py', reloading
+2025-07-30 23:41:18,450 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-30 23:41:18,909 - werkzeug - WARNING -  * Debugger is active!
+2025-07-30 23:41:18,915 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-07-30 23:41:20,730 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:41:20,730 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:41:20,731 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:41:21,004 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-30 23:41:21,414 - werkzeug - WARNING -  * Debugger is active!
+2025-07-30 23:41:21,419 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-07-30 23:41:27,889 - app - INFO - Converting 10 USD to TRY
+2025-07-30 23:41:28,743 - app - INFO - API Response Status: 400
+2025-07-30 23:41:28,743 - app - INFO - API Response: {"success":false,"error":{"code":105,"type":"base_currency_access_restricted"}}
+2025-07-30 23:41:28,744 - app - ERROR - API hatasý: 400
+2025-07-30 23:41:28,752 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:41:28] "POST / HTTP/1.1" 200 -
+2025-07-30 23:41:32,975 - app - INFO - Converting 5 EUR to TRY
+2025-07-30 23:41:34,071 - app - INFO - API Response Status: 200
+2025-07-30 23:41:34,071 - app - INFO - API Response: {"success":true,"timestamp":1753905305,"base":"EUR","date":"2025-07-30","rates":{"TRY":46.367364}}
+2025-07-30 23:41:34,073 - app - INFO - API Data: {'success': True, 'timestamp': 1753905305, 'base': 'EUR', 'date': '2025-07-30', 'rates': {'TRY': 46.367364}}
+2025-07-30 23:41:34,074 - app - INFO - Conversion successful: 5 EUR = 231.83682000000002 TRY
+2025-07-30 23:41:34,078 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:41:34] "POST / HTTP/1.1" 200 -
+2025-07-30 23:41:38,158 - app - INFO - Converting 5 USD to TRY
+2025-07-30 23:41:39,226 - app - INFO - API Response Status: 400
+2025-07-30 23:41:39,227 - app - INFO - API Response: {"success":false,"error":{"code":105,"type":"base_currency_access_restricted"}}
+2025-07-30 23:41:39,228 - app - ERROR - API hatasý: 400
+2025-07-30 23:41:39,231 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:41:39] "POST / HTTP/1.1" 200 -
+2025-07-30 23:41:46,284 - app - INFO - Converting 0.03 CAD to TRY
+2025-07-30 23:41:47,305 - app - INFO - API Response Status: 400
+2025-07-30 23:41:47,306 - app - INFO - API Response: {"success":false,"error":{"code":105,"type":"base_currency_access_restricted"}}
+2025-07-30 23:41:47,306 - app - ERROR - API hatasý: 400
+2025-07-30 23:41:47,309 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:41:47] "POST / HTTP/1.1" 200 -
+2025-07-30 23:41:54,125 - app - INFO - Converting 10 TRY to USD
+2025-07-30 23:41:55,038 - app - INFO - API Response Status: 400
+2025-07-30 23:41:55,039 - app - INFO - API Response: {"success":false,"error":{"code":105,"type":"base_currency_access_restricted"}}
+2025-07-30 23:41:55,039 - app - ERROR - API hatasý: 400
+2025-07-30 23:41:55,042 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:41:55] "POST / HTTP/1.1" 200 -
+2025-07-30 23:44:09,676 - app - INFO - Converting 10 USD to TRY
+2025-07-30 23:44:10,767 - app - INFO - API Response Status: 400
+2025-07-30 23:44:10,768 - app - INFO - API Response: {"success":false,"error":{"code":105,"type":"base_currency_access_restricted"}}
+2025-07-30 23:44:10,768 - app - ERROR - API hatasý: 400
+2025-07-30 23:44:10,771 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:44:10] "POST / HTTP/1.1" 200 -
+2025-07-30 23:44:14,272 - app - INFO - Converting 10 EUR to TRY
+2025-07-30 23:44:15,454 - app - INFO - API Response Status: 200
+2025-07-30 23:44:15,455 - app - INFO - API Response: {"success":true,"timestamp":1753905305,"base":"EUR","date":"2025-07-30","rates":{"TRY":46.367364}}
+2025-07-30 23:44:15,456 - app - INFO - API Data: {'success': True, 'timestamp': 1753905305, 'base': 'EUR', 'date': '2025-07-30', 'rates': {'TRY': 46.367364}}
+2025-07-30 23:44:15,457 - app - INFO - Conversion successful: 10 EUR = 463.67364000000003 TRY
+2025-07-30 23:44:15,461 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:44:15] "POST / HTTP/1.1" 200 -
+2025-07-30 23:45:54,619 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:45:54,623 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:45:54,726 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-30 23:45:55,243 - werkzeug - WARNING -  * Debugger is active!
+2025-07-30 23:45:55,247 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-07-30 23:45:56,908 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:45:56,909 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:45:57,330 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-30 23:45:57,784 - werkzeug - WARNING -  * Debugger is active!
+2025-07-30 23:45:57,789 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-07-30 23:46:28,824 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:46:28,826 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:46:28,828 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-07-30 23:46:29,034 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-07-30 23:46:29,628 - werkzeug - WARNING -  * Debugger is active!
+2025-07-30 23:46:29,633 - werkzeug - INFO -  * Debugger PIN: 119-393-562
