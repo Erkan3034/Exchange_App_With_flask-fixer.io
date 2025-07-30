@@ -113,3 +113,44 @@
 2025-07-30 23:46:29,034 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
 2025-07-30 23:46:29,628 - werkzeug - WARNING -  * Debugger is active!
 2025-07-30 23:46:29,633 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-07-30 23:47:05,198 - app - INFO - Converting 10 EUR to TRY
+2025-07-30 23:47:06,111 - app - INFO - Conversion successful: 10 EUR = 463.67364000000003 TRY
+2025-07-30 23:47:06,119 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:47:06] "POST / HTTP/1.1" 200 -
+2025-07-30 23:47:07,680 - app - INFO - Converting 10 USD to TRY
+2025-07-30 23:47:08,573 - app - INFO - Conversion successful: 10 USD = 405.82101374373445 TRY
+2025-07-30 23:47:08,574 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:47:08] "POST / HTTP/1.1" 200 -
+2025-07-30 23:47:13,461 - app - INFO - Converting 10 USD to EUR
+2025-07-30 23:47:14,490 - app - INFO - Conversion successful: 10 USD = 8.75229857241258 EUR
+2025-07-30 23:47:14,492 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:47:14] "POST / HTTP/1.1" 200 -
+2025-07-30 23:47:17,394 - app - INFO - Converting 10 USD to CHF
+2025-07-30 23:47:18,359 - app - INFO - Conversion successful: 10 USD = 8.138000992510658 CHF
+2025-07-30 23:47:18,361 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:47:18] "POST / HTTP/1.1" 200 -
+2025-07-30 23:47:25,533 - app - INFO - Converting 8.13 TRY to USD
+2025-07-30 23:47:26,510 - app - INFO - Conversion successful: 8.13 TRY = 0.2003346235080347 USD
+2025-07-30 23:47:26,511 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:47:26] "POST / HTTP/1.1" 200 -
+2025-07-30 23:47:33,143 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:47:33] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-30 23:57:15,968 - app - INFO - Converting 8.13 TRY to USD
+2025-07-30 23:57:16,808 - app - INFO - Conversion successful: 8.13 TRY = 0.20026774631332683 USD
+2025-07-30 23:57:16,824 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:57:16] "POST / HTTP/1.1" 200 -
+2025-07-30 23:58:10,932 - app - INFO - Converting 8.13 TRY to USD
+2025-07-30 23:58:11,818 - app - INFO - Conversion successful: 8.13 TRY = 0.20026774631332683 USD
+2025-07-30 23:58:11,830 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:58:11] "POST / HTTP/1.1" 200 -
+2025-07-30 23:58:25,489 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:58:25] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-30 23:58:34,242 - app - INFO - Converting 8.13 TRY to TRY
+2025-07-30 23:58:35,230 - app - INFO - Conversion successful: 8.13 TRY = 8.13 TRY
+2025-07-30 23:58:35,231 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:58:35] "POST / HTTP/1.1" 200 -
+2025-07-30 23:58:40,634 - app - INFO - Converting 8.13 USD to TRY
+2025-07-30 23:58:41,570 - app - INFO - Conversion successful: 8.13 USD = 330.0426614707532 TRY
+2025-07-30 23:58:41,571 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:58:41] "POST / HTTP/1.1" 200 -
+2025-07-30 23:58:59,014 - app - INFO - Converting 330.0426614707532 USD to USD
+2025-07-30 23:58:59,932 - app - INFO - Conversion successful: 330.0426614707532 USD = 330.0426614707532 USD
+2025-07-30 23:58:59,934 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:58:59] "POST / HTTP/1.1" 200 -
+2025-07-30 23:59:20,916 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:59:20] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-30 23:59:38,018 - app - INFO - Converting 330.0426614707532 TRY to USD
+2025-07-30 23:59:38,820 - app - INFO - Conversion successful: 330.0426614707532 TRY = 8.13 USD
+2025-07-30 23:59:38,821 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:59:38] "POST / HTTP/1.1" 200 -
+2025-07-30 23:59:38,860 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:59:38] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-30 23:59:44,042 - app - INFO - Converting 50 USD to TRY
+2025-07-30 23:59:44,819 - app - INFO - Conversion successful: 50 USD = 2029.7826658717909 TRY
+2025-07-30 23:59:44,820 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:59:44] "POST / HTTP/1.1" 200 -
+2025-07-30 23:59:44,847 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:59:44] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -

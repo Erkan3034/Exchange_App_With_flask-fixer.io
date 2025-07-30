@@ -2,6 +2,10 @@
 
 Flask tabanlı döviz çevirici uygulaması. Fixer.io API kullanarak gerçek zamanlı döviz kurları ile çeviri yapar.
 
+### Uygulamadan Kareler
+![Uygulama Ekran Görüntüsü](img/ss.png)
+
+
 ## Kurulum
 
 1. **Gerekli paketleri yükleyin:**
@@ -78,3 +82,4 @@ Fixer.io ücretsiz planında:
 - CHF (İsviçre Frangı)
 - CNY (Çin Yuanı)
 - RUB (Rus Rublesi) 
+- Daha fazlası
