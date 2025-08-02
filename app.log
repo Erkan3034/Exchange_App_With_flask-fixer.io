@@ -214,3 +214,6 @@
 2025-08-02 23:51:20,050 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:51:20] "POST / HTTP/1.1" 200 -
 2025-08-02 23:51:21,370 - app - INFO - Conversion successful: 50 EUR = 2356.10595 TRY
 2025-08-02 23:51:21,372 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:51:21] "POST / HTTP/1.1" 200 -
+2025-08-03 00:02:49,481 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-08-03 00:02:49,485 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-08-03 00:02:50,293 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
