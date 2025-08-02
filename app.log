@@ -154,3 +154,63 @@
 2025-07-30 23:59:44,819 - app - INFO - Conversion successful: 50 USD = 2029.7826658717909 TRY
 2025-07-30 23:59:44,820 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:59:44] "POST / HTTP/1.1" 200 -
 2025-07-30 23:59:44,847 - werkzeug - INFO - 127.0.0.1 - - [30/Jul/2025 23:59:44] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-08-02 23:48:21,030 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.2.0.2:5000
+2025-08-02 23:48:21,031 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 23:48:21,060 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-02 23:48:21,857 - werkzeug - WARNING -  * Debugger is active!
+2025-08-02 23:48:21,864 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-08-02 23:48:25,720 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:48:25] "GET / HTTP/1.1" 200 -
+2025-08-02 23:48:27,173 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:48:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-02 23:48:34,300 - app - INFO - Converting 45 USD to TRY
+2025-08-02 23:48:35,045 - app - INFO - Converting 45 USD to TRY
+2025-08-02 23:48:38,764 - app - INFO - Conversion successful: 45 USD = 1829.0333962132327 TRY
+2025-08-02 23:48:38,779 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:48:38] "POST / HTTP/1.1" 200 -
+2025-08-02 23:48:38,880 - app - ERROR - API hatasý: 429
+2025-08-02 23:48:38,882 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:48:38] "POST / HTTP/1.1" 200 -
+2025-08-02 23:48:50,095 - app - INFO - Converting 5050 TRY to USD
+2025-08-02 23:48:50,152 - app - INFO - Converting 5050 TRY to USD
+2025-08-02 23:48:54,453 - app - INFO - Conversion successful: 5050 TRY = 124.24595443171816 USD
+2025-08-02 23:48:54,457 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:48:54] "POST / HTTP/1.1" 200 -
+2025-08-02 23:48:54,505 - app - ERROR - API hatasý: 429
+2025-08-02 23:48:54,510 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:48:54] "POST / HTTP/1.1" 200 -
+2025-08-02 23:50:23,603 - werkzeug - INFO -  * Detected change in 'C:\\Program Files\\Python313\\Lib\\logging\\__init__.py', reloading
+2025-08-02 23:50:24,070 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-02 23:50:24,816 - werkzeug - WARNING -  * Debugger is active!
+2025-08-02 23:50:24,824 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-08-02 23:50:24,915 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-08-02 23:50:24,916 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\Desktop\\PYTHON-NOTES\\Flask-Fixer.io_ile_Doviz_Cevirici\\app.py', reloading
+2025-08-02 23:50:25,962 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-02 23:50:26,670 - werkzeug - WARNING -  * Debugger is active!
+2025-08-02 23:50:26,681 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-08-02 23:50:50,319 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\AppData\\Roaming\\Python\\Python313\\site-packages\\requests\\models.py', reloading
+2025-08-02 23:50:50,952 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-02 23:50:51,720 - werkzeug - WARNING -  * Debugger is active!
+2025-08-02 23:50:51,732 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-08-02 23:50:53,477 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\AppData\\Roaming\\Python\\Python313\\site-packages\\requests\\api.py', reloading
+2025-08-02 23:50:53,544 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\AppData\\Roaming\\Python\\Python313\\site-packages\\requests\\__init__.py', reloading
+2025-08-02 23:50:53,921 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-02 23:50:54,550 - werkzeug - WARNING -  * Debugger is active!
+2025-08-02 23:50:54,561 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-08-02 23:50:54,994 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\AppData\\Roaming\\Python\\Python313\\site-packages\\requests\\structures.py', reloading
+2025-08-02 23:50:55,041 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\AppData\\Roaming\\Python\\Python313\\site-packages\\requests\\compat.py', reloading
+2025-08-02 23:50:55,224 - werkzeug - INFO -  * Detected change in 'C:\\Program Files\\Python313\\Lib\\encodings\\idna.py', reloading
+2025-08-02 23:50:55,306 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\AppData\\Roaming\\Python\\Python313\\site-packages\\urllib3\\exceptions.py', reloading
+2025-08-02 23:50:55,368 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Win11\\AppData\\Roaming\\Python\\Python313\\site-packages\\urllib3\\fields.py', reloading
+2025-08-02 23:50:55,738 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-02 23:50:56,560 - werkzeug - WARNING -  * Debugger is active!
+2025-08-02 23:50:56,568 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-08-02 23:50:57,212 - werkzeug - INFO -  * Detected change in 'C:\\Program Files\\Python313\\Lib\\datetime.py', reloading
+2025-08-02 23:50:57,252 - werkzeug - INFO -  * Detected change in 'C:\\Program Files\\Python313\\Lib\\_pydatetime.py', reloading
+2025-08-02 23:50:57,353 - werkzeug - INFO -  * Detected change in 'C:\\Program Files\\Python313\\Lib\\io.py', reloading
+2025-08-02 23:50:57,727 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-02 23:50:58,475 - werkzeug - WARNING -  * Debugger is active!
+2025-08-02 23:50:58,487 - werkzeug - INFO -  * Debugger PIN: 119-393-562
+2025-08-02 23:51:18,017 - app - INFO - Converting 50 EUR to TRY
+2025-08-02 23:51:19,722 - app - INFO - Converting 50 EUR to TRY
+2025-08-02 23:51:20,017 - app - INFO - Conversion successful: 50 EUR = 2356.10595 TRY
+2025-08-02 23:51:20,050 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:51:20] "POST / HTTP/1.1" 200 -
+2025-08-02 23:51:21,370 - app - INFO - Conversion successful: 50 EUR = 2356.10595 TRY
+2025-08-02 23:51:21,372 - werkzeug - INFO - 127.0.0.1 - - [02/Aug/2025 23:51:21] "POST / HTTP/1.1" 200 -
