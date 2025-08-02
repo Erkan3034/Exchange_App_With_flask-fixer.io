@@ -7,6 +7,10 @@ A modern, responsive web application for real-time currency conversion using Fla
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 
+
+![App Screenshot](img/ss.png)
+
+
 ## ✨ Features
 
 - **Real-time Exchange Rates**: Get live currency rates from Fixer.io API
